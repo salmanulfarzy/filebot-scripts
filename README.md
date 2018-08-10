@@ -52,6 +52,12 @@ TV Shows/{n}/{'Season '+s}/{n} - {s00e00} - {t}
 
 Categorise based on series name and seasons.
 
+#### TODO
+
+ - Hide rating if rating == 0.0
+ - Check for subtitles only if language other than Malayalam or Tamil (`Based on `SpokenLanguages`)
+ - Use Genre only for movies produced outside India(`country` info available)
+
 #### Resources
 
 - [Filebot format expressions][1]
