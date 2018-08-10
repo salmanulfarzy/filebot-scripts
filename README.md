@@ -1,3 +1,32 @@
+### Integration with qBitTorrent
+
+```sh
+/usr/bin/filebot -script fn:amc \
+    --output "$HOME/Media" \
+    --action 'move' \
+    --conflict 'skip' \
+    -non-strict \
+    --log-file 'amc.log' \
+    --def excludeList=amc.excludes
+    --def unsorted=y \
+    --def subtitles=en \
+    --def clean=y \
+    --def "ut_dir=%F"
+    --def "ut_kind=multi" \
+    --def "ut_title=%N" \
+    --def "ut_label=%L" \
+    --def "seriesFormat={home}/Media/TV Shows/{n}/{'Season '+s}/{n} - {s00e00} - {t}" \
+    --def "movieFormat={home}/Media/Movies/{info.SpokenLanguages.displayLanguage[0]}/{n} {[y, genre, rating]} / {n} ({y}) [{fn.findMatch('scr|hq') ? 'Scr, ' : {fn.findMatch('TV') ? 'TV, ' : null} }{vf}, {vc}]"
+```
+
+#### Copy friendly format
+
+```sh
+/usr/bin/filebot -script fn:amc --action 'move' --conflict 'skip' -non-strict --log-file 'amc.log' --def excludeList=amc.excludes unsorted=y clean=y "ut_dir=%F" "ut_kind=multi" "ut_title=%N" "ut_label=%L" "seriesFormat={home}/Media/TV Shows/{n}/{'Season '+s}/{n} - {s00e00} - {t}" "movieFormat={home}/Media/Movies/{info.SpokenLanguages.displayLanguage[0]}/{n} {[y, genre, rating]}/ {n} ({y}) [{fn.findMatch('scr|hq') ? 'Scr, ' : {fn.findMatch('TV') ? 'TV, ' : null} }{vf}, {vc}]"
+```
+
+### Format expressions
+
 Format expressions used with [filebot]
 
 #### Movies
